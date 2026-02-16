@@ -1,4 +1,4 @@
-import type { AnnotViewContextType } from "@obzt/components";
+import type { AnnotViewContextType } from "../../components/pkg";
 import type { AnnotationInfo } from "@obzt/database";
 import { MarkdownView, Menu, Notice } from "obsidian";
 import { isMarkdownFile } from "@/utils";

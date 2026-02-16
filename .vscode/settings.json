@@ -1,0 +1,9 @@
+{
+  "chat.tools.terminal.autoApprove": {
+    "/^pnpm install$/": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "git lfs": true
+  }
+}

@@ -62,7 +62,7 @@ export class ImgCacheImporter extends Service {
       };
       this.queue.set(inVaultPath, task);
     } else {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+       
       task = this.queue.get(inVaultPath)!;
     }
     // return task;

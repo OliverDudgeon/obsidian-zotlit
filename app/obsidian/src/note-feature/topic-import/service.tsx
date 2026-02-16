@@ -1,4 +1,4 @@
-import { ObsidianContext } from "@obzt/components";
+import { ObsidianContext } from "../../components/pkg";
 import { Service } from "@ophidian/core";
 import { getAllTags, TFile } from "obsidian";
 

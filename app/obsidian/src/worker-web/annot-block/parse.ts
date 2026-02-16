@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import type { Content, Link, Paragraph } from "mdast";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
@@ -36,22 +36,22 @@ const parse: AnnotBlockWorkerAPI["parse"] = (markdown) => {
         fallbacks.set(node, cache.replace(/\n+/g, " ").trim());
         cache = "";
       } else {
-        const { start, end } = node.position!;
-        cache += markdown.slice(start.offset!, end.offset!);
+        const { start, end } = node.position;
+        cache += markdown.slice(start.offset, end.offset);
       }
     }
   }
 
   const withoutLinks = filterRanges(
     markdown,
-    links.map(({ position: { start, end } }) => [start.offset!, end.offset!]),
+    links.map(({ position: { start, end } }) => [start.offset, end.offset]),
   );
   const annots: AnnotInfo[] = links.map((link) => {
     const { url, children } = link;
     const first = children[0],
       last = children[children.length - 1];
     const base = {
-      annotKey: new URL(url).searchParams.get("annotation")!,
+      annotKey: new URL(url).searchParams.get("annotation"),
       url,
       fallback: fallbacks.get(link) ?? "",
     };
@@ -99,9 +99,9 @@ const filterRanges = (text: string, ranges: [number, number][]) => {
 
 const getChildrenText = (text: string, children: Content[]) => {
   if (children.length === 0) return "";
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  const start = children[0].position!.start.offset!,
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    end = children[children.length - 1].position!.end.offset!;
+   
+  const start = children[0].position.start.offset,
+     
+    end = children[children.length - 1].position.end.offset;
   return text.slice(start, end);
 };

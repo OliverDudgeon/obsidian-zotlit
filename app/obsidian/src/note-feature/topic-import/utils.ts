@@ -1,5 +1,5 @@
-import type { CheckedState } from "@obzt/components";
-import { createStore as create } from "@obzt/components";
+import type { CheckedState } from "../../components/pkg";
+import { createStore as create } from "../../components/pkg";
 
 export const topicPrefix = "#zt-topic/",
   toDisplayName = (topic: string) => topic.substring(topicPrefix.length);

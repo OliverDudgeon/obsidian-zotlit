@@ -1,5 +1,5 @@
-import type { AnnotViewStore } from "@obzt/components";
-import { createStore as create } from "@obzt/components";
+import type { AnnotViewStore } from "../../components/pkg";
+import { createStore as create } from "../../components/pkg";
 import type { AttachmentInfo } from "@obzt/database";
 import {
   cacheActiveAtch,
@@ -23,7 +23,6 @@ const getActiveAttachment = (
 };
 
 type PickNonFunctionKeys<T extends Record<string, any>> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
   [P in keyof T]: T[P] extends Function ? never : P;
 }[keyof T];
 type PickNonFunction<T extends Record<string, any>> = Pick<

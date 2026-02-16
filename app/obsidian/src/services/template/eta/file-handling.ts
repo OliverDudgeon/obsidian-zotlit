@@ -45,7 +45,7 @@ export function readFile(this: ObsidianEta, filepath: string): string {
   if (!this.tplFileCache.has(file)) {
     throw new EtaError(`File '${filepath}' not loaded`);
   }
-  return this.tplFileCache.get(file)!;
+  return this.tplFileCache.get(file);
 }
 
 /**

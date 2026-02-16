@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 import type { INotifyRegularItem } from "@obzt/protocol";
 import { Service, calc, effect } from "@ophidian/core";
 import { assertNever } from "assert-never";

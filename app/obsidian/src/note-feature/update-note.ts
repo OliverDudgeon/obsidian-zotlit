@@ -109,7 +109,7 @@ export async function updateNote(
 
     const annotSections = pipe(
       (meta.sections?.filter(isAnnotBlock) ?? []).flatMap((s) =>
-        splitMultipleAnnotKey(s.id!).map((key) => [key, s.position] as const),
+        splitMultipleAnnotKey(s.id).map((key) => [key, s.position] as const),
       ),
       groupBy(([key]) => key),
       mapWithKey((key, pos) => ({
@@ -120,7 +120,7 @@ export async function updateNote(
     const annotBlocks = new Set(
       Object.values(meta.blocks ?? {})
         ?.filter(isAnnotBlock)
-        .flatMap((s) => splitMultipleAnnotKey(s.id!).map((key) => key)),
+        .flatMap((s) => splitMultipleAnnotKey(s.id).map((key) => key)),
     );
     const toAdd = new Map<HelperExtra, AnnotationInfo[]>(
         attachmentIDs.map((id) => [extraByAtch[id], []]),
@@ -151,7 +151,7 @@ export async function updateNote(
                 })),
               );
             } else if (!annotBlocks.has(blockID)) {
-              toAdd.get(extra)!.push(annot);
+              toAdd.get(extra).push(annot);
             }
             // blocks that are not section do not support in-place update
           }) ?? [],

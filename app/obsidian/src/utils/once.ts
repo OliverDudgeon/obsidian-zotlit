@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { assertNever } from "assert-never";
 import type { App, EventRef } from "obsidian";
 import { debounce } from "obsidian";

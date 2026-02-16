@@ -23,7 +23,6 @@ export function useSwitch(value: boolean, onChange: (value: boolean) => void) {
         compRef.current = comp;
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
   );
 }

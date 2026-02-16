@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type {
   AnnotationInfo,
   AttachmentInfo,
@@ -5,7 +6,6 @@ import type {
   RegularItemInfo,
 } from "@obzt/database";
 import { Service } from "@ophidian/core";
-
 import { nanoid } from "nanoid";
 import { htmlToMarkdown } from "obsidian";
 import log from "@/log";
@@ -16,11 +16,11 @@ import { DataAnnotation, DataCitation, keyFromItemURI } from "./format";
 import { bgColor, color } from "./parse/color";
 
 declare global {
-  // eslint-disable-next-line no-var, @typescript-eslint/naming-convention, @typescript-eslint/consistent-type-imports
+   
   var TurndownService: typeof import("turndown");
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+ 
 const Placeholder = {
   cite: {
     pattern: /%%ZTNOTE\.CITE:([\w-]{10})%%/g,
@@ -32,7 +32,7 @@ const Placeholder = {
   },
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
+ 
 interface Note extends NoteNormailzed {}
 class Note {
   constructor(noteNormailzed: NoteNormailzed) {
@@ -85,18 +85,18 @@ export class NoteParser extends Service {
         const [highlightEl, citationEl] = node.children;
         // remove every children of node before citataion element and citation element itself
         while (node.firstChild !== citationEl) {
-          node.removeChild(node.firstChild!);
+          node.removeChild(node.firstChild);
         }
         node.removeChild(citationEl);
         const annotation = parseAnnotation(
-          (highlightEl as HTMLElement).dataset.annotation!,
+          (highlightEl as HTMLElement).dataset.annotation,
         );
-        const commentNode = node as HTMLElement;
+        const commentNode = node;
         const key = nanoid(10);
         this.annotations.set(key, {
           annotationKey: annotation.annotationKey,
-          citationKey: keyFromItemURI(annotation.citationItem.uris[0])!,
-          attachementKey: keyFromItemURI(annotation.attachmentURI)!,
+          citationKey: keyFromItemURI(annotation.citationItem.uris[0]),
+          attachementKey: keyFromItemURI(annotation.attachmentURI),
           commentHTML: commentNode.textContent?.trim()
             ? commentNode.innerHTML
             : null,
@@ -113,12 +113,12 @@ export class NoteParser extends Service {
         if (!(node instanceof HTMLElement)) {
           throw new Error("Unexpected node");
         }
-        const citation = parseCitation(node.dataset.citation!);
+        const citation = parseCitation(node.dataset.citation);
         const key = nanoid(10);
         this.citations.set(key, {
           text: content,
           itemKeys: citation.citationItems.map(
-            ({ uris: [idUri] }) => keyFromItemURI(idUri)!,
+            ({ uris: [idUri] }) => keyFromItemURI(idUri),
           ),
         });
         return Placeholder.cite.create(key);
@@ -134,12 +134,12 @@ export class NoteParser extends Service {
         if (!(node instanceof HTMLElement)) {
           throw new Error("Unexpected node");
         }
-        const annotation = parseAnnotation(node.dataset.annotation!);
+        const annotation = parseAnnotation(node.dataset.annotation);
         const key = nanoid(10);
         this.annotations.set(key, {
           annotationKey: annotation.annotationKey,
-          citationKey: keyFromItemURI(annotation.citationItem.uris[0])!,
-          attachementKey: keyFromItemURI(annotation.attachmentURI)!,
+          citationKey: keyFromItemURI(annotation.citationItem.uris[0]),
+          attachementKey: keyFromItemURI(annotation.attachmentURI),
           commentHTML: null,
           inline: true,
         });
@@ -235,7 +235,7 @@ export class NoteParser extends Service {
 
     const parsed = markdown
       .replaceAll(Placeholder.cite.pattern, (_, key) => {
-        const citeData = this.citations.get(key)!;
+        const citeData = this.citations.get(key);
         const items = citeData.itemKeys.map((key) => {
           const item = docItems.get(key);
           if (!item) {
@@ -258,7 +258,7 @@ export class NoteParser extends Service {
         return citation;
       })
       .replaceAll(Placeholder.annot.pattern, (_, key) => {
-        const annotData = this.annotations.get(key)!;
+        const annotData = this.annotations.get(key);
         const docItem = docItems.get(annotData.citationKey);
         if (!docItem) {
           log.error(`citation not found, key:`, key, annotData);

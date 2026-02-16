@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 import { pathToFileURL } from "url";
 import { enumerate, getItemKeyGroupID, toPage } from "@obzt/common";
 import type { AnnotationInfo, AttachmentInfo, TagInfo } from "@obzt/database";

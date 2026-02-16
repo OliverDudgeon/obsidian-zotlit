@@ -1,4 +1,4 @@
-import { cn } from "@obzt/components/utils";
+import { cn } from "../../components/pkg/utils";
 import type { PropsWithChildren } from "react";
 import type { DatabaseStatus } from "./useDatabaseStatus";
 

@@ -12,7 +12,7 @@ function handleCache(
     options && options.async ? this.templatesAsync : this.templatesSync;
 
   if (!template.startsWith("@")) {
-    const templatePath = options.filepath as string;
+    const templatePath = options.filepath;
 
     const cachedTemplate = templateStore.get(templatePath);
 

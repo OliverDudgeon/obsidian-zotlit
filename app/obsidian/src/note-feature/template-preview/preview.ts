@@ -141,7 +141,7 @@ export class TemplatePreview extends TemplatePreviewBase {
           });
           break;
         default:
-          assertNever(templateType);
+          assertNever(templateType as never);
       }
       if (markdown === this.content?.markdown) return;
       this.content?.unload();

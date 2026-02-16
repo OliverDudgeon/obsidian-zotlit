@@ -151,7 +151,7 @@ function getClickableTokenAt(
     end: this.offsetToPos(tokenAtPos.to),
   };
   if (noteIndex.citekeyCache.has(citekey)) {
-    const [notePath] = noteIndex.citekeyCache.get(citekey)!;
+    const [notePath] = noteIndex.citekeyCache.get(citekey);
     return {
       type: "internal-link",
       text: notePath,

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 import { join } from "path/posix";
 import annotation from "../defaults/zt-annot.ejs";
 import annots from "../defaults/zt-annots.ejs";

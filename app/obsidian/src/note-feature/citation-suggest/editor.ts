@@ -38,7 +38,7 @@ export class CitationEditorSuggest extends ZoteroItemEditorSuggest {
     return {
       end,
       start: {
-        ch: match.index as number,
+        ch: match.index,
         line: cursor.line,
         alt: Boolean(match[0]?.endsWith("/")),
       } as EditorPositionWithAlt,

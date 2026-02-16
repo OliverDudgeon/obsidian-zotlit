@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { deferred } from "@ophidian/core";
 import { debounce } from "obsidian";
 

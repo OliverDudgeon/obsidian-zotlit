@@ -1,4 +1,4 @@
-import type { ObsidianContextType } from "@obzt/components";
+import type { ObsidianContextType } from "../../components/pkg";
 import { Component, MarkdownRenderer, setIcon } from "obsidian";
 import type { RefCallback } from "react";
 import { useRef } from "react";

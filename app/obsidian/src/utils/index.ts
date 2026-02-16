@@ -44,6 +44,6 @@ export const getFilePath = (file: TAbstractFile | string): string =>
 // };
 
 declare global {
-  // eslint-disable-next-line no-var, @typescript-eslint/naming-convention, @typescript-eslint/consistent-type-imports
+   
   var DOMPurify: typeof import("dompurify");
 }

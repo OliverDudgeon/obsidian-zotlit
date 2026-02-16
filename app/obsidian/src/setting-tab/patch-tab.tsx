@@ -37,7 +37,7 @@ export default abstract class PluginSettingTabWithLifecycle extends PluginSettin
   }
   unload(): void {
     while (this.#events.length > 0) {
-      this.#events.pop()!();
+      this.#events.pop()();
     }
   }
 

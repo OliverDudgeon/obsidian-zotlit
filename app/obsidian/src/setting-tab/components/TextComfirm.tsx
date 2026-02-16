@@ -1,4 +1,4 @@
-import { TextareaAutosize as Textarea } from "@obzt/components";
+import { TextareaAutosize as Textarea } from "../../components/pkg";
 import type { PropsWithChildren, ReactNode } from "react";
 import { useState } from "react";
 import type { Settings } from "@/settings/service";
@@ -52,7 +52,6 @@ export function TextComfirmSettingBase({
   const [checkIconRef] = useIconRef<HTMLButtonElement>("check");
   return (
     <SettingsComponent name={name} description={children}>
-      {/** @ts-expect-error Pick util in ts5 pick non-existing keys with value unknown */}
       <Textarea className="border" value={value} onChange={onChange} />
       <button aria-label="Apply" ref={checkIconRef} onClick={onSubmit} />
     </SettingsComponent>

@@ -67,11 +67,9 @@ jspm_packages/
 # OS X temporary files
 .DS_Store
 
-# Rush temporary files
-common/deploy/
-common/temp/
-common/autoinstallers/*/.npmrc
-**/.rush/temp/
+# pnpm
+pnpm-debug.log*
+.pnpm-store/
 
 # Heft
 .heft

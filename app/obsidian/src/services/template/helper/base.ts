@@ -10,6 +10,6 @@ export interface Context {
 export const zoteroDataDir = (ctx: Context) =>
   ctx.plugin.settings.current?.zoteroDataDir;
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+ 
 export const Proxied = Symbol("proxied");
-export const isProxied = (obj: any): boolean => !!(obj as any)[Proxied];
+export const isProxied = (obj: any): boolean => !!(obj)[Proxied];

@@ -35,23 +35,23 @@
     }
   },
   "dependencies": {
-    "monkey-around": "^2.3.0",
-    "assert-never": "^1.2.1",
-    "@obzt/common": "workspace:*",
     "@aidenlx/zotero-helper": "workspace:*",
-    "@obzt/protocol": "workspace:*",
     "@mobily/ts-belt": "^4.0.0-rc.5",
-    "@obzt/database": "workspace:*"
+    "@obzt/common": "workspace:*",
+    "@obzt/database": "workspace:*",
+    "@obzt/protocol": "workspace:*",
+    "assert-never": "^1.2.1",
+    "monkey-around": "^2.3.0"
   },
   "devDependencies": {
     "@aidenlx/eslint-config": "workspace:*",
     "@release-it/bumper": "^4.0.0",
+    "@types/eslint": "^9.6.1",
     "cz-conventional-changelog": "^3.3.0",
     "esbuild": "^0.17.4",
-    "@types/eslint": "~8.4.6",
-    "zotero-types": "~1.0.4",
-    "eslint": "~8.36.0",
-    "typescript": "~5.1.6"
+    "eslint": "^9.39.2",
+    "typescript": "~5.1.6",
+    "zotero-types": "~1.0.4"
   },
   "browserslist": [
     "firefox >= 60"

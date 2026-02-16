@@ -22,7 +22,6 @@ export const getSuggestions = async (
     return await plugin.database.getItemsOf(50);
   }
 };
-// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 export function renderSuggestion(
   this: SuggesterBase,
   { item, fields }: SearchResult,

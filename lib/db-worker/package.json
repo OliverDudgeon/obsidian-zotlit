@@ -14,25 +14,24 @@
   },
   "devDependencies": {
     "@aidenlx/eslint-config": "workspace:*",
-    "@types/node": "^17.0.10",
-    "typescript": "~5.1.6",
-    "eslint": "~8.36.0",
+    "@types/better-sqlite3": "~7.6.11",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^20.11.30",
     "cross-env": "^7.0.3",
-    "@types/eslint": "~8.4.6",
-    "@types/flexsearch": "~0.7.3",
-    "@types/better-sqlite3": "~7.6.11"
+    "eslint": "^9.39.2",
+    "typescript": "~5.1.6"
   },
   "dependencies": {
     "@aidenlx/better-sqlite3": "11.1.2",
-    "@obzt/zotero-type": "workspace:*",
     "@aidenlx/workerpool": "workspace:*",
-    "@obzt/common": "workspace:*",
-    "log4js": "~6.6.1",
-    "assert-never": "^1.2.1",
     "@mobily/ts-belt": "^4.0.0-rc.5",
-    "localforage": "~1.10.0",
+    "@obzt/common": "workspace:*",
     "@obzt/database": "workspace:*",
+    "@obzt/zotero-type": "workspace:*",
+    "assert-never": "^1.2.1",
     "flexsearch": "0.7.31",
+    "localforage": "~1.10.0",
+    "log4js": "~6.6.1",
     "nanoevents": "~7.0.1"
   }
 }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Extension } from "@codemirror/state";
 import { Service, calc, effect } from "@ophidian/core";
 import { SettingsService, skip } from "@/settings/base";

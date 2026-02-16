@@ -11,13 +11,13 @@
   },
   "devDependencies": {
     "@aidenlx/eslint-config": "workspace:*",
-    "@types/node": "^17.0.10",
+    "@types/node": "^20.11.30",
     "typescript": "~5.1.6",
-    "eslint": "~8.36.0",
+    "eslint": "^9.39.2",
     "@rmp135/sql-ts": "~1.15.0",
     "knex": "~2.3.0",
     "better-sqlite3": "^7.5.0",
-    "@types/eslint": "~8.4.6"
+    "@types/eslint": "^9.6.1"
   },
   "dependencies": {
     "@obzt/common": "workspace:*",

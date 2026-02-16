@@ -43,7 +43,7 @@ export class SettingsService extends _SettingsService<Settings> {
   }
 
   @calc get libId() {
-    return this.current?.citationLibrary;
+    return this.current?.citationLibrary ?? 1;
   }
 
   @calc get simpleTemplates() {

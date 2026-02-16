@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 
 import { join } from "path/posix";
 import { betterSqlite3 } from "@obzt/common";
@@ -7,7 +7,7 @@ import { Platform } from "obsidian";
 import _PLATFORM_SUPPORT from "@/platform.json";
 
 const appDataDir: string | null = Platform.isDesktopApp
-  ? // eslint-disable-next-line @typescript-eslint/no-var-requires
+  ?  
     require("@electron/remote").app.getPath("userData")
   : null;
 

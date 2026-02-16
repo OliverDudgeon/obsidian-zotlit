@@ -1,0 +1,38 @@
+{
+  "name": "obsidian-zotlit-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "packageManager": "pnpm@10.29.2",
+  "engines": {
+    "node": ">=20.18.1"
+  },
+  "scripts": {
+    "build": "pnpm -r --if-present run build",
+    "build:workers": "pnpm -r --if-present run build:workers",
+    "check": "pnpm -r --if-present run check",
+    "dev": "pnpm -r --if-present run dev",
+    "lint": "pnpm -r --if-present run lint",
+    "format": "pnpm -r --if-present run format",
+    "test": "pnpm -r --if-present run test",
+    "release": "pnpm -r --if-present run release",
+    "commitlint": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
+    "@eslint/js": "^9.39.2",
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^20.11.30",
+    "eslint": "^9.39.2",
+    "typescript": "~5.1.6",
+    "typescript-eslint": "^8.55.0"
+  },
+  "pnpm": {
+    "neverBuiltDependencies": [
+      "electron",
+      "@aidenlx/better-sqlite3",
+      "better-sqlite3"
+    ]
+  }
+}

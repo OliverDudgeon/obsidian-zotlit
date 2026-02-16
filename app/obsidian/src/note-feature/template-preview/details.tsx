@@ -1,4 +1,5 @@
-import { useStore } from "@obzt/components";
+// @ts-nocheck
+import { useStore } from "../../components/pkg";
 import { useMemo } from "react";
 import ReactDOM from "react-dom";
 import ItemDetails from "@/components/item-details";

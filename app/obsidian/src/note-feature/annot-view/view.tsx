@@ -1,6 +1,13 @@
 import { pathToFileURL } from "url";
-import type { AnnotViewContextType, AnnotViewStore } from "@obzt/components";
-import { ObsidianContext, AnnotViewContext, AnnotView } from "@obzt/components";
+import type {
+  AnnotViewContextType,
+  AnnotViewStore,
+} from "../../components/pkg";
+import {
+  ObsidianContext,
+  AnnotViewContext,
+  AnnotView,
+} from "../../components/pkg";
 import { getCacheImagePath } from "@obzt/database";
 import type { INotifyActiveReader } from "@obzt/protocol";
 import type { ViewStateResult, WorkspaceLeaf } from "obsidian";

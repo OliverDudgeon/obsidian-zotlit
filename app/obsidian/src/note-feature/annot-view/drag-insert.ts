@@ -1,5 +1,5 @@
 import { selectKeys } from "@mobily/ts-belt/Dict";
-import type { AnnotViewContextType } from "@obzt/components";
+import type { AnnotViewContextType } from "../../components/pkg";
 import { isMarkdownFile } from "@/utils";
 import type ZoteroPlugin from "@/zt-main";
 import type { AnnotViewStoreValues } from "./store";

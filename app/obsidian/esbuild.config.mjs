@@ -87,7 +87,7 @@ const opts = {
   entryPoints: ["src/zt-main.ts"],
   banner: { js: banner },
   outfile: "build/main.js",
-  tsconfig: "tsconfig.build.json",
+  tsconfig: "tsconfig.json",
   plugins: [
     lessLoader(),
     obPlugin({ beta: isPreRelease }),
@@ -102,11 +102,11 @@ const opts = {
               : path.startsWith("@/worker-iframe/")
               ? "src/worker-iframe/tsconfig.json"
               : `${path}/tsconfig`,
-            { kind: "require-resolve" }
+            { kind: "require-resolve" },
           )
         ).path,
         target: "es2022",
-        platform: path.startsWith("@/worker-iframe/") ? "browser": "node",
+        platform: path.startsWith("@/worker-iframe/") ? "browser" : "node",
         format: path.startsWith("@/worker-iframe/") ? "esm" : "cjs",
         sourcemap: !isProd ? "inline" : false,
       }),

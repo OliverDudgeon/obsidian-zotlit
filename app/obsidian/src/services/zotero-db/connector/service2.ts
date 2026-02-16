@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+ 
 import { Server } from "http";
 import { Service, calc } from "@ophidian/core";
 import { App } from "obsidian";

@@ -1,4 +1,4 @@
-import { createStore } from "@obzt/components";
+import { createStore } from "../../components/pkg";
 import type { AnnotationInfo, IDLibID } from "@obzt/database";
 import type { TFile, ViewStateResult, WorkspaceLeaf } from "obsidian";
 import { FileView } from "obsidian";

@@ -82,7 +82,7 @@ export const splitMultipleAnnotKey = (key: string): string[] =>
   key.split("n").map((annotKeyWithPage) => {
     const [, annotKey, , groupID] = annotKeyWithPage
       .split("p")[0]
-      .match(annotKeyPagePattern)!;
+      .match(annotKeyPagePattern);
     return getItemKeyGroupID(
       { key: annotKey, groupID: groupID ? +groupID : undefined },
       true,

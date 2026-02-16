@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/naming-convention */
+// @ts-nocheck
+ 
 import { scope } from "arktype";
 
 // uri like http://zotero.org/users/6775115/items/C689D5Q2

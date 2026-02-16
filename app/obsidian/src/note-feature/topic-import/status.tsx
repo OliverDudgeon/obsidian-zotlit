@@ -1,5 +1,5 @@
-import { useStore, ImportingStatus } from "@obzt/components";
-import type { StoreApi } from "@obzt/components";
+import { useStore, ImportingStatus } from "../../components/pkg";
+import type { StoreApi } from "../../components/pkg";
 import { Menu } from "obsidian";
 import { useRef } from "react";
 import type { IStore } from "./utils";

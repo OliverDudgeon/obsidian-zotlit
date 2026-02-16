@@ -1,4 +1,4 @@
-import { cn } from "@obzt/components/utils";
+import { cn } from "../../components/pkg/utils";
 // import { computed, effect } from "@ophidian/core";
 import { computed } from "@preact/signals-core";
 import { useMemoizedFn } from "ahooks";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@obzt/components/utils";
+import { cn } from "../../components/pkg/utils";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 import * as React from "react";
 

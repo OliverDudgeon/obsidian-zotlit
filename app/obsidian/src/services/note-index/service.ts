@@ -64,7 +64,7 @@ export default class NoteIndex extends Service {
         this.noteCache.set(itemKey, new Set([file]));
         return true;
       }
-      const files = this.noteCache.get(itemKey)!;
+      const files = this.noteCache.get(itemKey);
       const prevSize = files.size;
       return files.add(file).size !== prevSize;
     }
@@ -89,7 +89,7 @@ export default class NoteIndex extends Service {
       if (!blocks) return false;
       this.blockCache.byFile.delete(file);
       for (const block of blocks) {
-        const blocks = this.blockCache.byKey.get(block.key)!;
+        const blocks = this.blockCache.byKey.get(block.key);
         blocks.delete(block);
         if (blocks.size === 0) {
           this.blockCache.byKey.delete(block.key);
@@ -115,7 +115,7 @@ export default class NoteIndex extends Service {
 
     const blockInfo = pipe(
       annotBlocks.flatMap((s) =>
-        splitMultipleAnnotKey(s.id!).map((key) => [key, s.position] as const),
+        splitMultipleAnnotKey(s.id).map((key) => [key, s.position] as const),
       ),
       groupBy(([key]) => key),
       mapWithKey(
@@ -151,7 +151,7 @@ export default class NoteIndex extends Service {
         this.citekeyCache.set(citekey, new Set([file]));
         return true;
       }
-      const files = this.citekeyCache.get(citekey)!;
+      const files = this.citekeyCache.get(citekey);
       const prevSize = files.size;
       return files.add(file).size !== prevSize;
     }

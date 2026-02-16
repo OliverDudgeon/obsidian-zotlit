@@ -62,7 +62,7 @@ export class EtaSuggest extends EditorSuggest<EtaHint> {
     return {
       end,
       start: {
-        ch: match.index! + full.length - prefix.length,
+        ch: match.index + full.length - prefix.length,
         line: cursor.line,
       },
       query: match[1],

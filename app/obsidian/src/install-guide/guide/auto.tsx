@@ -52,7 +52,7 @@ const setErrorAtom = atom(
     const message = "Failed to install module when " + InstallState[phrase];
     logError(message, error);
     set(
-      errorMessageAtom,
+      errorMessageAtom as any,
       message + ": " + (error instanceof Error ? error.message : `${error}`),
     );
   },

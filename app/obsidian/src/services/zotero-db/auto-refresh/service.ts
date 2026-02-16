@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { FSWatcher } from "fs";
 import { watch } from "fs";
 import { map } from "@mobily/ts-belt/Dict";

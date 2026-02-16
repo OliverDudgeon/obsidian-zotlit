@@ -33,7 +33,6 @@ export default function useExtraButton(
         compRef.current = comp;
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [],
+      [],
   );
 }

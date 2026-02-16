@@ -27,7 +27,7 @@ import ZoteroSettingTab from "./setting-tab";
 import { useSettings } from "./settings/base";
 
 declare global {
-  // eslint-disable-next-line no-var
+   
   var zoteroAPI: PluginAPI | undefined;
 }
 

@@ -20,7 +20,7 @@ export const importModule = async (
   const target = createWriteStream(writeTo);
   try {
     const sourceFile = "build/Release/better_sqlite3.node";
-    let tasks: Promise<any>[] = [];
+    const tasks: Promise<any>[] = [];
     tasks.push(
       pipeline(
         Readable.from(Buffer.from(ab)),
