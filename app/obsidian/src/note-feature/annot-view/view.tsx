@@ -9,15 +9,21 @@ import {
   AnnotView,
 } from "../../components/pkg";
 import { getCacheImagePath } from "@obzt/database";
+import { multipleAnnotKeyPagePattern } from "@obzt/common";
 import type { INotifyActiveReader } from "@obzt/protocol";
 import type { ViewStateResult, WorkspaceLeaf } from "obsidian";
-import { Platform, Menu } from "obsidian";
+import { Platform, Menu, MarkdownView } from "obsidian";
 import ReactDOM from "react-dom";
 import { chooseAnnotAtch } from "@/components/atch-suggest";
 import { context } from "@/components/basic/context";
 import { DerivedFileView } from "@/components/derived-file-view";
 import { getItemKeyOf } from "@/services/note-index";
-import { getAtchIDsOf } from "@/services/note-index/utils";
+import {
+  getAtchIDsOf,
+  isAnnotBlock,
+  splitMultipleAnnotKey,
+} from "@/services/note-index/utils";
+import { isMarkdownFile } from "@/utils";
 import { untilZoteroReady } from "@/utils/once";
 import type ZoteroPlugin from "@/zt-main";
 import { chooseLiterature } from "../citation-suggest";
@@ -197,6 +203,32 @@ export class AnnotationView extends DerivedFileView {
         app.vault.on("zotero:db-refresh", callback);
         return () => app.vault.off("zotero:db-refresh", callback);
       },
+      registerNoteUpdate(callback) {
+        let editorTimer: number | undefined;
+        const triggerEditorUpdate = () => {
+          if (editorTimer !== undefined) {
+            window.clearTimeout(editorTimer);
+          }
+          editorTimer = window.setTimeout(callback, 120);
+        };
+        const metaRefs = [
+          app.metadataCache.on("changed", callback),
+          app.metadataCache.on("resolved", callback),
+          app.metadataCache.on("zotero:index-update", callback),
+          app.metadataCache.on("zotero:index-clear", callback),
+        ];
+        const workspaceRefs = [
+          app.workspace.on("active-leaf-change", callback),
+          app.workspace.on("editor-change", triggerEditorUpdate),
+        ];
+        return () => {
+          if (editorTimer !== undefined) {
+            window.clearTimeout(editorTimer);
+          }
+          metaRefs.forEach((ref) => app.metadataCache.offref(ref));
+          workspaceRefs.forEach((ref) => app.workspace.offref(ref));
+        };
+      },
       refreshConn: async () => {
         await plugin.dbWorker.refresh({ task: "dbConn" });
       },
@@ -228,9 +260,70 @@ export class AnnotationView extends DerivedFileView {
           );
         }
       },
+      getTargetNotePath: (item) => {
+        const activeFile = app.workspace.getActiveFile();
+        const activePath =
+          activeFile && isMarkdownFile(activeFile) ? activeFile.path : null;
+
+        if (activePath) {
+          return activePath;
+        }
+
+        const linkedNotes = plugin.noteIndex.getNotesFor(item);
+        if (linkedNotes.length === 0) return null;
+
+        return linkedNotes[0] ?? null;
+      },
+      getBlockKeysInFile: (file) => {
+        const activeFile = app.workspace.getActiveFile();
+        const activePath =
+          activeFile && isMarkdownFile(activeFile) ? activeFile.path : null;
+
+        const activeEditor = app.workspace.getActiveViewOfType(MarkdownView);
+        if (activePath === file && activeEditor?.editor) {
+          const keys = new Set<string>();
+          const content = activeEditor.editor.getValue();
+          const rawPattern = multipleAnnotKeyPagePattern.source
+            .replace(/^\^/, "")
+            .replace(/\$$/, "");
+          const blockIdPattern = new RegExp(`\\^(${rawPattern})(?=\\s|$)`, "g");
+
+          let match: RegExpExecArray | null;
+          while ((match = blockIdPattern.exec(content)) !== null) {
+            for (const key of splitMultipleAnnotKey(match[1])) {
+              keys.add(key);
+            }
+          }
+
+          return keys;
+        }
+
+        const cache = app.metadataCache.getCache(file);
+        const keys = new Set<string>();
+
+        for (const section of cache?.sections ?? []) {
+          if (!isAnnotBlock(section)) continue;
+          for (const key of splitMultipleAnnotKey(section.id)) {
+            keys.add(key);
+          }
+        }
+
+        for (const block of Object.values(cache?.blocks ?? {})) {
+          if (!isAnnotBlock(block)) continue;
+          for (const key of splitMultipleAnnotKey(block.id)) {
+            keys.add(key);
+          }
+        }
+
+        return keys;
+      },
       onDragStart: getDragStartHandler(plugin),
       onMoreOptions: getMoreOptionsHandler(self),
       annotRenderer: getAnnotRenderer(plugin),
+      onLinkLiterature: async (event) => {
+        (event.target as HTMLElement).blur();
+        await self.onSetFollowNull();
+      },
       onSetFollow(event) {
         const menu = new Menu();
         const follow = store.getState().follow;
@@ -250,17 +343,6 @@ export class AnnotationView extends DerivedFileView {
               .onClick(self.onSetFollowOb),
           );
         }
-        menu.addItem((i) =>
-          i
-            .setIcon("file-lock-2")
-            .setTitle("Link with selected literature")
-            .onClick(async () => {
-              // prevent focus from transfering back from modal,
-              // triggering another keyup event
-              (event.target as HTMLElement).blur();
-              await self.onSetFollowNull();
-            }),
-        );
         if (event.nativeEvent instanceof MouseEvent) {
           menu.showAtMouseEvent(event.nativeEvent);
         } else {

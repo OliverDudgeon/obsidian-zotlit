@@ -24,7 +24,7 @@ const useAttachmentSelect = () =>
 export default function AttachmentSelector() {
   const { attachments, onChange, value } = useAttachmentSelect();
   if (!attachments) {
-    return <>Loading</>;
+    return <>Loading attachments</>;
   }
   if (attachments.length === 1) {
     return null;
