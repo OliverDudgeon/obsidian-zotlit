@@ -1,5 +1,6 @@
-import type { trimConfig } from "eta-prf";
 import { Template, type TplType } from "./eta/preset";
+
+type trimConfig = "nl" | "slurp" | false;
 
 export interface SettingsTemplate {
   template: { folder: string; templates: Record<TplType.Embeded, string> };

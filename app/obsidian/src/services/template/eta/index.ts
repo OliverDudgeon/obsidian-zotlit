@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { use } from "@ophidian/core";
-import { EtaCore, EtaError } from "eta-prf";
+import { Eta as EtaCore, EtaError } from "eta";
 import { App, type TFile } from "obsidian";
 import { SettingsService } from "@/settings/base";
 import { isMarkdownFile } from "@/utils";

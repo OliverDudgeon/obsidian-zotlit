@@ -1,6 +1,6 @@
 import { isAbsolute, join, relative } from "node:path/posix";
-import type { Eta as EtaCore } from "eta-prf";
-import { EtaError } from "eta-prf";
+import type { Eta as EtaCore } from "eta";
+import { EtaError } from "eta";
 import { normalizePath } from "obsidian";
 import { Template, fromPath, toFilename } from "./preset";
 import type { ObsidianEta } from ".";

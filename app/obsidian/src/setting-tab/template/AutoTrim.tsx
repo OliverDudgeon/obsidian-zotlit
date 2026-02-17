@@ -1,9 +1,9 @@
 import { useMemoizedFn } from "ahooks";
-import type { trimConfig } from "eta-prf";
 import { useState } from "react";
 import SettingsComponent, { useSetting } from "../components/Setting";
 
 type EtaTrimConfigOption = "false" | "nl" | "slurp";
+type trimConfig = "nl" | "slurp" | false;
 
 export default function AutoTrimSetting() {
   const [defaultLeading, applyLeading] = useSetting(

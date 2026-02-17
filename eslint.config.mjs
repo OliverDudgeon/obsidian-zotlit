@@ -44,28 +44,6 @@ export default [
   },
   {
     files: [
-      "lib/eta/**/*.{ts,tsx,js,cjs,mjs}",
-      "lib/eta/**/*.cts",
-      "lib/eta/**/*.mts",
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["lib/eta/tsconfig.eslint.json"],
-      },
-    },
-    rules: {
-      "@typescript-eslint/await-thenable": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-require-imports": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-function-type": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-    },
-  },
-  {
-    files: [
       "app/obsidian/**/*.{ts,tsx,js,cjs,mjs}",
       "app/obsidian/**/*.cts",
       "app/obsidian/**/*.mts",

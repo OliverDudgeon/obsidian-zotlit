@@ -96,7 +96,7 @@
     "core-js": "~3.27.2",
     "core-js-pure": "~3.32.1",
     "escape-string-regexp": "^5.0.0",
-    "eta-prf": "workspace:*",
+    "eta": "4.5.1",
     "tailwind-merge": "~1.14.0",
     "use-immer": "~0.9.0",
     "zustand": "~4.4.1",

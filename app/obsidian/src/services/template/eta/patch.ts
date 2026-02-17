@@ -1,7 +1,7 @@
 import mapGroupBy from "core-js-pure/full/map/group-by";
 import objectGroupBy from "core-js-pure/full/object/group-by";
 
-import type { EtaCore } from "eta-prf";
+import type { Eta as EtaCore } from "eta";
 import { around } from "monkey-around";
 import { parseYaml, Notice } from "obsidian";
 import { extractFrontmatter } from "../get-fm";

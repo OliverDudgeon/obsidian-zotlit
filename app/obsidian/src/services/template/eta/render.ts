@@ -1,7 +1,9 @@
 /* TYPES */
-import { EtaError, type Options, type TemplateFunction } from "eta-prf";
+import { EtaError, type Options, type TemplateFunction } from "eta";
 import type { ObsidianEta } from ".";
 /* END TYPES */
+
+type CachedTemplateFunction = TemplateFunction & { mtime?: number };
 
 function handleCache(
   this: ObsidianEta,
@@ -14,7 +16,9 @@ function handleCache(
   if (!template.startsWith("@")) {
     const templatePath = options.filepath;
 
-    const cachedTemplate = templateStore.get(templatePath);
+    const cachedTemplate = templateStore.get(templatePath) as
+      | CachedTemplateFunction
+      | undefined;
 
     const mtime = this.readModTime(templatePath),
       prevMtime = cachedTemplate?.mtime;
